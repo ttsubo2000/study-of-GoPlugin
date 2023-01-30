@@ -1,0 +1,15 @@
+version: "3"
+
+tasks:
+  build:
+    cmds:
+      - cd calc ; go build -buildmode=plugin
+      - go build -o app
+  clean:
+    cmds:
+      - rm -f ./app
+      - find . -name "*.so" | xargs -I{} rm -f {}
+  run:
+    deps: [build]
+    cmds:
+      - ./app

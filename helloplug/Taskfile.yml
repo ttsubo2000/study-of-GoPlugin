@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  build:
+    cmds:
+      - go build ./cmd/helloplug/main.go
+      - go build -o hello-plugin ./plugins/hello/main.go
+  run:
+    deps: [build]
+    cmds:
+      - export GREETER_PLUGIN="./hello-plugin"
+      - ./main

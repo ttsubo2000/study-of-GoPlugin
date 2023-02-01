@@ -1,0 +1,11 @@
+version: "3"
+
+tasks:
+  build:
+    cmds:
+      - go build -o terrappoi .
+      - go build -o ./plugin/azure_provider ./plugin/azure_provider.go
+  run:
+    deps: [build]
+    cmds:
+      - ./terrappoi
